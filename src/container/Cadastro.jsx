@@ -1,42 +1,38 @@
 import React from "react";
-import { Box } from "@mui/system";
 import { Button, TextField, Typography } from "@mui/material";
 
-const Cadastro = (id, ...props) => {
+const Cadastro = () => {
   const [identifier, setIdentifier] = React.useState("");
   const [preco, setPreco] = React.useState("");
-  const [quantidade, setQuantidade] = React.useState("");
+  const [local, setLocal] = React.useState("");
 
   const onChangeIdentifier = (event) => {
-    localStorage.setItem("identifier", event.target.value);
 
     setIdentifier(event.target.value);
   };
   const onChangePreco = (event) => {
-    localStorage.setItem("identifier", event.target.value);
 
     setPreco(event.target.value);
   };
-  const onChangeQuantidade = (event) => {
-    localStorage.setItem("identifier", event.target.value);
+  const onChangeLocal = (event) => {
 
-    setQuantidade(event.target.value);
+    setLocal(event.target.value);
   };
 
 
-  const handleClick = (event) => {
-
-    localStorage.setItem("identifier", identifier);
+  const handleSubmit = (event) => {
+    if(identifier !== '' && preco !== '' && local !== ''){
+      localStorage.setItem("identifier", identifier);
     localStorage.setItem("preco", preco);
-    localStorage.setItem("quantidade", quantidade);
-
-    setIdentifier('');
-    setPreco('');
-    setQuantidade('');
+    localStorage.setItem("local", local);
+    } else {
+      alert('Por favor preencha os determinantes.');
+      return;
+    };
   }
 
   return (
-    <Box className="caixa">
+    <form onSubmit={handleSubmit} className="caixa">
       <Typography className="margin" align="center" variant="h4">
         Cadastro de Entregas
       </Typography>
@@ -60,18 +56,18 @@ const Cadastro = (id, ...props) => {
           />
           <TextField
             className="textfield"
-            type="number"
-            value={quantidade}
-            label="Quantidade"
-            onChange={onChangeQuantidade}
+            type="text"
+            value={local}
+            label="Local"
+            onChange={onChangeLocal}
             margin="normal"
           />
         </div>
       </div>
-      <Button className="margin" variant="contained" onClick={handleClick} fullWidth>
+      <Button type='submit' className="margin" variant="contained" fullWidth>
         Salvar
       </Button>
-    </Box>
+    </form>
   );
 };
 
