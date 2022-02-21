@@ -1,62 +1,59 @@
 import React from "react";
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, TextField, Typography, Box } from "@mui/material";
 
-const Cadastro = () => {
+const Cadastro = (onSave) => {
   const [identifier, setIdentifier] = React.useState("");
-  const [preco, setPreco] = React.useState("");
+  const [cliente, setCliente] = React.useState("");
   const [local, setLocal] = React.useState("");
 
   const onChangeIdentifier = (event) => {
-
     setIdentifier(event.target.value);
   };
-  const onChangePreco = (event) => {
-
-    setPreco(event.target.value);
+  const onChangecliente = (event) => {
+    setCliente(event.target.value);
   };
   const onChangeLocal = (event) => {
-
     setLocal(event.target.value);
   };
 
-
-  const handleSubmit = (event) => {
-    if(identifier !== '' && preco !== '' && local !== ''){
+  const handleClick = (event) => {
+    if (identifier !== "" && cliente !== "" && local !== "") {
       localStorage.setItem("identifier", identifier);
-    localStorage.setItem("preco", preco);
-    localStorage.setItem("local", local);
+      localStorage.setItem("cliente", cliente);
+      localStorage.setItem("local", local);
+
+      onSave({ identifier, cliente, local });
+      console.log(onSave);
+      window.location.reload();
     } else {
-      alert('Por favor preencha os determinantes.');
+      alert("Por favor preencha os campos.");
       return;
-    };
-  }
+    }
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="caixa">
+    <Box className="caixa">
       <Typography className="margin" align="center" variant="h4">
         Cadastro de Entregas
       </Typography>
       <div className="">
         <TextField
           className="textfield"
-          type="text"
           value={identifier}
-          label="Identificação"
+          label="descrição"
           onChange={onChangeIdentifier}
           fullWidth
         />
         <div className="">
           <TextField
             className="textfield"
-            type="number"
-            value={preco}
-            label="Preço"
-            onChange={onChangePreco}
+            value={cliente}
+            label="cliente"
+            onChange={onChangecliente}
             margin="normal"
           />
           <TextField
             className="textfield"
-            type="text"
             value={local}
             label="Local"
             onChange={onChangeLocal}
@@ -64,10 +61,16 @@ const Cadastro = () => {
           />
         </div>
       </div>
-      <Button type='submit' className="margin" variant="contained" fullWidth>
+      <Button
+        type="submit"
+        className="margin"
+        variant="contained"
+        onClick={handleClick}
+        fullWidth
+      >
         Salvar
       </Button>
-    </form>
+    </Box>
   );
 };
 
