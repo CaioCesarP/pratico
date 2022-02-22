@@ -12,3 +12,4 @@ yarn dev  **[start projeto]**
 
 # Deploy do projeto
 
+https://pratico.vercel.app/
