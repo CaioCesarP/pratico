@@ -11,86 +11,56 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-container {
-    margin-top: 3rem;
+h2 {
+    text-align: center;
+    margin: 2rem;
 }
 
-.cabeca {
-    margin: 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.gap {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
-divider {
-    margin-bottom: 2rem;
-}
-
-.visor{
+.app, .myForm {
     display: flex;
     flex-direction: column;
-    margin-top: 3rem;
 }
 
-.caixa {
-    margin-right: 2vw;
+.app {
+    margin: auto;
+    width: 50%;
 }
 
-.margin {
-    margin-bottom: 2.25rem;
-}
-.textfield {
+.myForm {
     display: flex;
-    flex-wrap: wrap;
-}
-
-thead {
-    background-color: #acacac;
-    justify-content: space-around
-    display: table;
+    flex-direction: column;
     width: 100%;
+    background-color: #dfe6e9;
+    border-radius: 5px;
+    padding: 20px;
 }
 
-.tabela {
-    border-left: 1px solid #808080;
-    border-right: 1px solid #808080;
-    table-layout:fixed;
+.formInput {
+    font-size: 14px;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
-.entrega {
-    border-left: 1px solid #808080;
-    border-right: 1px solid #808080;
-    width: 100vw;
+.myButton {
+    width: 100%;
+    padding: ;
+    margin: 8px 0;
 }
 
-tr {
-    margin-bottom: 10px;
+.myList {
+    display: flex;
+    flex-direction: column;
 }
-
-.id {
-    padding-left: 2.37rem;
-}
-
-th {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem
-}
-
-td {
-    padding-left: 1.4rem;
-    padding-right: 0.8rem;
-}
-
-
-@media screen and (min-width: 1000px) {
-    .visor{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        width: 100%;
-    }
-}
-
 
 input[type=number]::-webkit-inner-spin-button { 
     -webkit-appearance: none;
