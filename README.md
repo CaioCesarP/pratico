@@ -4,4 +4,11 @@ testando habilidades frontend, implementando um CRUD de entregas que lista, cada
 
 # Utilizados
 
-React.js, MaterialUI. (tentativa de utilizar - Redux, Redux-saga)
+React.js, MUI. 
+
+# Iniciando projeto
+
+yarn dev  **[start projeto]**
+
+# Deploy do projeto
+
