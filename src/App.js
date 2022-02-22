@@ -7,70 +7,70 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "Lista de Entregas",
-      act: 0,
-      index: "",
-      datas: [],
+      title: "Lista de Entregas", //Título do projeto
+      act: 0, //Determinante para cadastrar ou atualizar
+      index: "", //Estado do index
+      datas: [], //Array com as datas
     };
   }
 
-  componentDidMount() {
-    this.refs.produto.focus();
+  componentDidMount() { //Componente montado
+    this.refs.produto.focus(); //Produto focado
   }
 
   fSubmit = (e) => {
     e.preventDefault();
-    if(this.refs.produto.value !== '' && this.refs.local.value !== ''){
+    if(this.refs.produto.value !== '' && this.refs.local.value !== ''){ //Regra para acontecer submit
       let datas = this.state.datas;
       let produto = this.refs.produto.value;
       let local = this.refs.local.value;
 
-      if (this.state.act === 0) {
+      if (this.state.act === 0) { //Tendo act como 0, padrão, submit ira cadastrar
         let data = {
         produto,
         local,
       };
         datas.push(data);
-      } else {
+      } else { //Tendo act diferente de 0, submit ira atualizar
         let index = this.state.index;
-        datas[index].produto = produto;
-        datas[index].local = local;
+        datas[index].produto = produto; //Index sendo atualizado pelo THIS do fEdit
+        datas[index].local = local; //Index sendo atualizado pelo THIS do fEdit
       }
 
-      this.setState({
+      this.setState({ //Reconfigura datas e act
         datas: datas,
         act: 0,
       });
 
-      this.refs.myForm.reset();
-      this.refs.produto.focus();
+      this.refs.myForm.reset(); //Limpa os campo input
+      this.refs.produto.focus(); //Volta ao foco principal produto
     } else {
-      
+      alert('Preencha os dados para o cadastro'); 
     }
   };
 
   fRemove = (i) => {
     let datas = this.state.datas;
-    datas.splice(i, 1);
-    this.setState({
+    datas.splice(i, 1); //Utilizado splice, pega o [i] -> 2. carne, Boi&Cia; 2=i, retirando assim 1 item do array data começando pelo i
+    this.setState({ //Reconfigurando datas
       datas: datas,
     });
 
-    this.refs.myForm.reset();
-    this.refs.produto.focus();
+    this.refs.myForm.reset(); //Limpa os campos input
+    this.refs.produto.focus(); //Volta ao foco principal produto
   };
 
   fEdit = (i) => {
     let data = this.state.datas[i];
-    this.refs.produto.value = data.produto;
-    this.refs.local.value = data.local;
+    this.refs.produto.value = data.produto; //Retorna value do produto do referente THIS
+    this.refs.local.value = data.local; //Retorna value do local do referente THIS
 
-    this.setState({
+    this.setState({ //Reconfigura act e index, ligado com o submit
       act: 1,
       index: i,
     });
 
-    this.refs.produto.focus();
+    this.refs.produto.focus(); //Volta ao foco principal produto
   };
 
   render() {
