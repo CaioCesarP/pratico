@@ -76,6 +76,7 @@ h2 {
 
 pre {
     margin-top: 1rem;
+    margin-bottom: 1rem;
     width: auto;
     background-color: #e9e9e9;
     padding: 0.4rem;
