@@ -162,7 +162,11 @@ class App extends Component {
             ) : (
               datas.map((data, i) => (
                 <li key={i} className="myList">
-                  {i + 1}. {data.produto}, {data.local}
+                  {localStorage.setItem(
+                    i,
+                    `${i + 1}. ${data.produto}, ${data.local}`
+                  )}{" "}
+                  {localStorage.getItem(i)}
                   <Button
                     variant="outlined"
                     onClick={() => this.fRemove(i)}
