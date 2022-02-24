@@ -161,12 +161,14 @@ class App extends Component {
               </Typography>
             ) : (
               datas.map((data, i) => (
-                <li key={i} className="myList">
-                  {localStorage.setItem(
-                    i,
-                    `${i + 1}. ${data.produto}, ${data.local}`
-                  )}{" "}
-                  {localStorage.getItem(i)}
+                <li key={i} className="myList swing">
+                  <div class="myItem">
+                    {localStorage.setItem(
+                      i,
+                      `${i + 1}. ${data.produto}, ${data.local}`
+                    )}{" "}
+                    {localStorage.getItem(i).toLowerCase()}
+                  </div>
                   <Button
                     variant="outlined"
                     onClick={() => this.fRemove(i)}
